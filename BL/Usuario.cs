@@ -57,7 +57,7 @@ namespace BL
                 using (UsuariosAGAEntities context = new UsuariosAGAEntities())
                 {
                     var query = (from a in context.Usuarios
-                                 where a.IdUsuario = IdUsuario
+                                 where a.IdUsuario == IdUsuario
                                  select a).First();
                     if (query != null)
                     {
