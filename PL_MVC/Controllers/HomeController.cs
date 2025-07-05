@@ -10,6 +10,7 @@ namespace PL_MVC.Controllers
     {
         public ActionResult Index()
         {
+            ML.Usuario user = new ML.Usuario();
             return View();
         }
 
