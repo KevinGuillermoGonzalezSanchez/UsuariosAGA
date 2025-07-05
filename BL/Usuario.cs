@@ -82,6 +82,76 @@ namespace BL
 
             return result;
         }
+        public static ML.Result GetByIdLinq(int IdUsuario)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (UsuariosAGAEntities conn = new UsuariosAGAEntities())
+                {
+                    var listUsuarios = (from usuarioDB in conn.Usuarios
+                                        where usuarioDB.IdUsuario == IdUsuario
+
+                                        select new
+                                        {
+                                            IdUsuario = usuarioDB.IdUsuario,
+                                            Nombre = usuarioDB.Nombre,
+                                            ApellidoPaterno = usuarioDB.ApellidoPaterno,
+                                            ApellidoMaterno = usuarioDB.ApellidoMaterno,
+                                            FechaNacimiento = usuarioDB.FechaNacimiento
+
+                                        }).SingleOrDefault();
+
+                    if (listUsuarios != null)
+                    {
+                        result.Object = new List<object>();
+
+                        ML.Usuario usuario = new ML.Usuario();
+
+                        usuario.IdUsuario = listUsuarios.IdUsuario;
+                        usuario.Nombre = listUsuarios.Nombre;
+                        usuario.ApellidoPaterno = listUsuarios.ApellidoPaterno;
+                        usuario.ApellidoMaterno = listUsuarios.ApellidoMaterno;
+                        usuario.FechaNacimiento = (listUsuarios.FechaNacimiento).Value.ToString("dd/MM/yyyy");
+
+                        result.Object = usuario;
+                        result.Correct=true;
+
+                    }
+                    else
+                    {
+                        result.Correct = false;
+                        result.ErrorMessage = "No se encontraron registros";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = true;
+                result.ErrorMessage = ex.Message;
+                result.Exception = ex;
+            }
+            return result;
+        }
+
+        public static ML.Result UpdateLinq(ML.Usuario usuario)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Exception = ex;
+            }
+
+            return result;
+        }
 
 
         public static ML.Result GetAll()
