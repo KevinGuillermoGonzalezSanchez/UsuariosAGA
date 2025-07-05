@@ -28,30 +28,9 @@ namespace BL
 
                                         }).ToList();
 
-                    if(listUsuarios != null && listUsuarios.Count > 0 )
-                    {
-                        result.Objects = new List<object>();
-
-                        foreach(var obj in listUsuarios)
-                        {
-                            ML.Usuario usuario = new ML.Usuario();
-                            usuario.IdUsuario = obj.IdUsuario;
-                            usuario.Nombre = obj.Nombre;
-                            usuario.ApellidoPaterno = obj.ApellidoPaterno;
-                            usuario.ApellidoMaterno = obj.ApellidoMaterno;
-                            usuario.FechaNacimiento = obj.FechaNacimiento?.ToString("dd/MM/yyyy");
-                            result.Objects.Add(usuario);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                result.Correct = false;
-                result.ErrorMessage = ex.Message;
-            }
-            return result;
         }
+
+     
 
     }
 }
