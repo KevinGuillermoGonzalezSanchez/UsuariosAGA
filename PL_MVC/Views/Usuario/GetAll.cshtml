@@ -25,58 +25,59 @@
     </div>
 
     <div class="row">
-        <div class="col-6">
-            @if (Model.Usuarios != null)
-            {
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-
-                            <th> Editar </th>
-                            <th> IdUsuario </th>
-                            <th> Nombre </th>
-                            <th> ApellidoPaterno </th>
-                            <th> ApellidoMaterno </th>
-                            <th> FechaNacimiento </th>
-                            <th> Eliminar </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (ML.Usuario usuario in Model.Usuarios)
-                        {
+        <div class="col-12">
+            <div class="table-responsive">
+                @if (Model.Usuarios != null)
+                {
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a href="@Url.Action("Formulario","Usuario", new {IdUsuario = usuario.IdUsuario})">
-                                        <i class="bi bi-pencil-fill"></i>
-                                    </a>
-                                </td>
-                                <td>@usuario.IdUsuario</td>
-                                <td>@usuario.Nombre </td>
-                                <td>@usuario.ApellidoPaterno</td>
-                                <td>@usuario.ApellidoMaterno</td>
-                                <td>@usuario.FechaNacimiento</td>
-                                <td>
-                                    <a href="@Url.Action("Delete", "Usuario", new {IdUsuario = usuario.IdUsuario})"
-                                       onclick="return confirmarEliminacion(@usuario.IdUsuario);">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </a>
 
-                                </td>
-
+                                <th> Editar </th>
+                                <th> IdUsuario </th>
+                                <th> Nombre </th>
+                                <th> ApellidoPaterno </th>
+                                <th> ApellidoMaterno </th>
+                                <th> FechaNacimiento </th>
+                                <th> Eliminar </th>
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (ML.Usuario usuario in Model.Usuarios)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("Formulario","Usuario", new {IdUsuario = usuario.IdUsuario})">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                    </td>
+                                    <td>@usuario.IdUsuario</td>
+                                    <td>@usuario.Nombre </td>
+                                    <td>@usuario.ApellidoPaterno</td>
+                                    <td>@usuario.ApellidoMaterno</td>
+                                    <td>@usuario.FechaNacimiento</td>
+                                    <td>
+                                        <a href="@Url.Action("Delete", "Usuario", new {IdUsuario = usuario.IdUsuario})"
+                                           onclick="return confirmarEliminacion(@usuario.IdUsuario);">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </a>
 
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <div class="alert alert-danger" role="alert">
-                    ERROR
-                </div>
-            }
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        ERROR
+                    </div>
+                }
+            </div>
         </div>
-    </div>
 </div>
 
 <script>
