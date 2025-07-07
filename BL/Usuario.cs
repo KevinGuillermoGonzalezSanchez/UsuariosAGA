@@ -159,7 +159,7 @@ namespace BL
                     else
                     {
                         result.Correct = false;
-                        result.ErrorMessage="No se logro Actualizar"
+                        result.ErrorMessage = "No se logro Actualizar";
                     }
 
                 }
