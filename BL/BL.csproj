@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DL\DL.csproj">
-      <Project>{830d1020-5c0e-4cbe-b452-a1fa330bc8b1}</Project>
-      <Name>DL</Name>
+    <ProjectReference Include="..\DL_EF\DL_EF.csproj">
+      <Project>{75fda99f-407b-44ad-8697-60933375e630}</Project>
+      <Name>DL_EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\DL_EF\DL_EF.csproj">
       <Project>{75fda99f-407b-44ad-8697-60933375e630}</Project>
