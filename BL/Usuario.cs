@@ -141,7 +141,28 @@ namespace BL
 
             try
             {
+                using (DL_EF.UsuariosAGAEntities conn = new DL_EF.UsuariosAGAEntities())
+                {
+                    var query = (from usuarioDB in conn.Usuarios where usuarioDB.IdUsuario == usuario.IdUsuario
+                                 select usuarioDB).SingleOrDefault();
 
+                    if (query != null)
+                    {
+                        query.Nombre = usuario.Nombre;
+                        query.ApellidoPaterno = usuario.ApellidoPaterno;
+                        query.ApellidoMaterno = usuario.ApellidoMaterno;
+                        query.FechaNacimiento = DateTime.ParseExact(usuario.FechaNacimiento, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                        conn.SaveChanges();
+                        result.Correct = true;
+                    }
+                    else
+                    {
+                        result.Correct = false;
+                        result.ErrorMessage="No se logro Actualizar"
+                    }
+
+                }
             }
             catch (Exception ex)
             {
