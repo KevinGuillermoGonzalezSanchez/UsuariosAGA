@@ -208,6 +208,12 @@ namespace BL
                             usuario.FechaNacimiento = obj.FechaNacimiento?.ToString("dd/MM/yyyy");
                             result.Objects.Add(usuario);
                         }
+                        result.Correct = true;
+                    }
+                    else 
+                    {
+                        result.Correct= false;
+                        result.ErrorMessage = "No se encontraron registros";
                     }
                 }
             }
