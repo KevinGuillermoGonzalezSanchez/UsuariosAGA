@@ -151,7 +151,7 @@ namespace BL
                         query.Nombre = usuario.Nombre;
                         query.ApellidoPaterno = usuario.ApellidoPaterno;
                         query.ApellidoMaterno = usuario.ApellidoMaterno;
-                        query.FechaNacimiento = DateTime.ParseExact(usuario.FechaNacimiento, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        query.FechaNacimiento = DateTime.ParseExact(usuario.FechaNacimiento, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
                         conn.SaveChanges();
                         result.Correct = true;
