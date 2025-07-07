@@ -78,6 +78,8 @@ namespace PL_MVC.Controllers
             else
             {
                 result = BL.Usuario.UpdateLinq(usuario);
+
+
                 return RedirectToAction("GetAll");
             }
 
