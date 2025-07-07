@@ -28,6 +28,7 @@ namespace PL_MVC.Controllers
                     usuario = (ML.Usuario)respuesta.Object;
                     }
             }
+            return View(usuario);
         }
 
         [HttpPost]
