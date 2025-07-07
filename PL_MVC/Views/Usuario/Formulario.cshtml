@@ -19,7 +19,7 @@
     @using (Html.BeginForm("Formulario", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
-        @Html.HiddenFor(model => model.IdUsuario)
+        @Html.HiddenFor(model => model.IdUsuario);
 
         <div class="row">
             <div class="col-12 col-md-3 col-sm-12">

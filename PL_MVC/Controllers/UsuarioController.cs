@@ -48,52 +48,52 @@ namespace PL_MVC.Controllers
             ML.Result result = new ML.Result();
             ML.Usuario usuario = new ML.Usuario();
 
-            if (IdUsuario == 0)
-            {
+            //if (IdUsuario == 0)
+            //{
 
-            }
-            else
-            {
-                var respuesta = GetByIdLinq((int)IdUsuario);
+            //}
+            //else
+            //{
+            //    var respuesta = GetByIdLinq((int)IdUsuario);
 
-                    if (respuesta.Correct = true)
-                    {
-                    usuario = (ML.Usuario)respuesta.Object;
-                    }
-            }
+            //        if (respuesta.Correct = true)
+            //        {
+            //        usuario = (ML.Usuario)respuesta.Object;
+            //        }
+            //}
             return View(usuario);
         }
 
-        [HttpPost]
-        public ActionResult Formulario(ML.Usuario usuario)
-        {
-            ML.Result result = new ML.Result();
+        //[HttpPost]
+        //public ActionResult Formulario(ML.Usuario usuario)
+        //{
+        //    ML.Result result = new ML.Result();
 
-            if (usuario.IdUsuario == 0)
-            {
-                result = BL.Usuario.AddLinQ(usuario);
-                return RedirectToAction("GetAll");
-            }
-            else
-            {
-                result = BL.UpdateLinq(IdUsuario);
-                return RedirectToAction("GetAll");
-            }
+        //    if (usuario.IdUsuario == 0)
+        //    {
+        //        result = BL.Usuario.AddLinQ(usuario);
+        //        return RedirectToAction("GetAll");
+        //    }
+        //    else
+        //    {
+        //        result = BL.UpdateLinq(IdUsuario);
+        //        return RedirectToAction("GetAll");
+        //    }
 
-            return View();
-        }
-        public ActionResult Delete(int IdUsuario)
-        {
-            ML.Result result = BL.Usuario.DeleteLinQ(IdUsuario);
-            if (result.Correct)
-            {
-                return RedirectToAction("GetAll");
-            }
-            else
-            {
-                ViewBag.ErrorMessage = "Error al eliminar";
-                return View("Error");
-            }
-        }
+        //    return View();
+        //}
+        //public ActionResult Delete(int IdUsuario)
+        //{
+        //    ML.Result result = BL.Usuario.DeleteLinQ(IdUsuario);
+        //    if (result.Correct)
+        //    {
+        //        return RedirectToAction("GetAll");
+        //    }
+        //    else
+        //    {
+        //        ViewBag.ErrorMessage = "Error al eliminar";
+        //        return View("Error");
+        //    }
+        //}
     }
 }
