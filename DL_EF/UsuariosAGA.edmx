@@ -5,8 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UsuariosAGAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'UsuariosAGA.dbo.Usuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -18,20 +16,15 @@ advertencia 6002: La tabla o vista 'UsuariosAGA.dbo.Usuario' no tiene definida n
           <Property Name="FechaNacimiento" Type="date" />
         </EntityType>
         <EntityContainer Name="UsuariosAGAModelStoreContainer">
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Usuario].[IdUsuario] AS [IdUsuario], 
-    [Usuario].[Nombre] AS [Nombre], 
-    [Usuario].[ApellidoPaterno] AS [ApellidoPaterno], 
-    [Usuario].[ApellidoMaterno] AS [ApellidoMaterno], 
-    [Usuario].[FechaNacimiento] AS [FechaNacimiento]
-    FROM [dbo].[Usuario] AS [Usuario]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UsuariosAGAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UsuariosAGAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Usuarios" EntityType="UsuariosAGAModel.Usuario" />
+        </EntityContainer>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -42,9 +35,6 @@ advertencia 6002: La tabla o vista 'UsuariosAGA.dbo.Usuario' no tiene definida n
           <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="UsuariosAGAEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -54,11 +44,11 @@ advertencia 6002: La tabla o vista 'UsuariosAGA.dbo.Usuario' no tiene definida n
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="UsuariosAGAModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
-                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
                 <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
