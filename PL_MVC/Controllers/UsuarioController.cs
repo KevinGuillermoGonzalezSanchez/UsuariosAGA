@@ -43,7 +43,7 @@ namespace PL_MVC.Controllers
 
         // GET: Usuario
         [HttpGet]
-        public ActionResult Formulario(int IdUsuario)
+        public ActionResult Formulario(int? IdUsuario)
         {
             ML.Result result = new ML.Result();
             ML.Usuario usuario = new ML.Usuario();
