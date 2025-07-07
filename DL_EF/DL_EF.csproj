@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32CC922B-0F19-4053-A6EF-33EBE8223153}</ProjectGuid>
+    <ProjectGuid>{75FDA99F-407B-44AD-8697-60933375E630}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BL</RootNamespace>
-    <AssemblyName>BL</AssemblyName>
+    <RootNamespace>DL_EF</RootNamespace>
+    <AssemblyName>DL_EF</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,26 +53,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Usuario.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs">
+      <DependentUpon>UsuariosAGA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosAGA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsuariosAGA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosAGA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsuariosAGA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosAGA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsuariosAGA.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DL_EF\DL_EF.csproj">
-      <Project>{75fda99f-407b-44ad-8697-60933375e630}</Project>
-      <Name>DL_EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DL_EF\DL_EF.csproj">
-      <Project>{75fda99f-407b-44ad-8697-60933375e630}</Project>
-      <Name>DL_EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ML\ML.csproj">
-      <Project>{881d995a-83a5-4a46-bf3a-1dcbd37ae02e}</Project>
-      <Name>ML</Name>
-    </ProjectReference>
+    <EntityDeploy Include="UsuariosAGA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UsuariosAGA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.Config" />
     <None Include="packages.config" />
+    <None Include="UsuariosAGA.edmx.diagram">
+      <DependentUpon>UsuariosAGA.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UsuariosAGA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UsuariosAGA.edmx</DependentUpon>
+      <LastGenOutput>UsuariosAGA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UsuariosAGA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UsuariosAGA.edmx</DependentUpon>
+      <LastGenOutput>UsuariosAGA.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
