@@ -9,6 +9,39 @@ namespace PL_MVC.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
+        public ActionResult GetAll()
+         {
+             ML.Usuario usuario = new ML.Usuario();
+             ML.Result result = BL.Usuario.GetAll();
+
+             if (result.Correct)
+             {
+                 usuario.Usuarios = new List<object>();
+                 usuario.Usuarios = result.Objects;
+
+             }
+
+             return View(usuario);
+         }
+
+       /* public ActionResult GetAll()
+        {
+            ML.Usuario usuario = new ML.Usuario();
+            usuario.Usuarios = new List<object>();
+
+            var respuesta = GetAll();
+
+            if (respuesta.Correct)
+            {
+                usuario.Usuarios = respuesta.Objects.ToList();
+            }
+
+            return View(usuario);
+        }*/
+
+
+
+        // GET: Usuario
         [HttpGet]
         public ActionResult Formulario()
         {
