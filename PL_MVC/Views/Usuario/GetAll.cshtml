@@ -1,0 +1,68 @@
+﻿@Model ML.Usuario 
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetAll</h2>
+<div class="container">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <div class="row">
+        <div class="col-md-6">
+            @Html.ActionLink("+", "Formulario", "Usuario", new { @class = "btn btn-success" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            @if (Model.Usuarios != null)
+            {
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th> Editar </th>
+                            <th> IdUsuario </th>
+                            <th> Nombre </th>
+                            <th> ApellidoPaterno </th>
+                            <th> ApellidoMaterno </th>
+                            <th> FechaNacimiento </th>
+                            <th> Eliminar </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ML.Usuario usuario in Model.Usuarios)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Formulario","Usuario", new {IdUsuario = usuario.IdUsuario})">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                </td>
+                                <td>@usuario.IdUsuario</td>
+                                <td>@usuario.Nombre </td>
+                                <td>@usuario.ApellidoPaterno</td>
+                                <td>@usuario.ApellidoMaterno</td>
+                                <td>@usuario.FechaNacimiento</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Usuario", new {IdUsuario = usuario.IdUsuario})">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    ERROR
+                </div>
+            }
+        </div>
+    </div>
+</div>
