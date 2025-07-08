@@ -1,0 +1,47 @@
+﻿@model ML.Usuario
+@{
+    ViewBag.Title = "Formulario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Formulario</h2>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h6> Ingrese los datos del Usuario: <h6>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm("Formulario", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.HiddenFor(model => model.IdUsuario)
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-sm-12">
+                @Html.LabelFor(model => model.Nombre, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control w-100", @id = "txtNombre", maxlength = "30", })
+
+            </div>
+            <div class="col-12 col-md-4 col-sm-12">
+                @Html.LabelFor(model => model.ApellidoPaterno, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control w-100", @id = "txtApellidoPat", maxlength = "30", @required = "required" })
+
+            </div>
+            <div class="col-12 col-md-4 col-sm-12">
+                @Html.LabelFor(model => model.ApellidoMaterno, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control w-100 ", @id = "txtApellidoMat", maxlength = "30", @required = "required" })
+
+            </div>
+
+            <div class="col-md-4 col-sm-12 ">
+                @Html.LabelFor(model => model.FechaNacimiento, new { @class = "form-label", @required = "required" })
+                <input type="date" class="form-control" id="date" name="FechaNacimiento" value="@Model.FechaNacimiento" onblur="ValidarDate();" />
+                
+            </div>
+        </div>
+</div>
