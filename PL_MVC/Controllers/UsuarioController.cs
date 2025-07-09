@@ -55,7 +55,7 @@ namespace PL_MVC.Controllers
             }
             else
             {
-                var respuesta = BL.Usuario.GetByIdLinq((int)IdUsuario);
+                var respuesta = BL.Usuario.GetByIdLinq(IdUsuario.Value);
 
                 if (respuesta.Correct == true)
                 {
